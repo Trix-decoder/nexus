@@ -713,16 +713,43 @@ end
 
 local Tab1 = window:NewTab("Combat")
 
-local Tab1Section = Tab1:NewSection("Combat")
-
 local Tab2 = window:NewTab("Blatant")
-
-local Tab2Secttion = Tab2:NewSection("Blatant")
 
 local Tab3 = window:NewTab("Render")
 
-local Tab3Section = Tab2:NewSection("Render")
-
 local Tab4 = window:NewTab("World")
 
-local Tab4Secttion = Tab4:NewSection("World")
+local Section2 = Tab2:NewSection("KillAura")
+Tab2Section:NewToggle("KillAura", "Autoswing the sword if someone is near you", function(state)
+
+	if state then
+
+		BindToStepped("Killaura", 1, function()
+
+			if entity.isAlive then
+
+				KillauraRemote()
+
+			end
+
+		end)
+
+	else
+
+		UnbindFromStepped("Killaura")
+
+	end
+
+end)
+
+local Section2 = Tab2:NewSection("Speed")
+Tab1Section:NewSlider("Speed 1-42", "Adjust CFrame speed", 42, 1, function(s)
+
+	speedval["Value"] = s
+
+end)
+
+local Section2 = Tab2:NewSection("Use at ur risk")
+Section:NewButton("Long Jump", "ButtonInfo", function()
+    workspace.gravity = 20
+end)
