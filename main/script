@@ -748,8 +748,3 @@ Tab1Section:NewSlider("Speed 1-42", "Adjust CFrame speed", 42, 1, function(s)
 	speedval["Value"] = s
 
 end)
-
-local Section2 = Tab2:NewSection("Use at ur risk")
-Section:NewButton("Long Jump", "ButtonInfo", function()
-    workspace.gravity = 20
-end)
